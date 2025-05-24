@@ -7,7 +7,11 @@ public class Frogger extends PApplet {
     static final int HEIGHT = 400;
     static int x=300;
     static int y=370;
-    
+    CarThing car1;
+    CarThing car2;
+    CarThing car3;
+    CarThing car4;
+
     
     @Override
     public void settings() {
@@ -16,14 +20,23 @@ public class Frogger extends PApplet {
 
     @Override
     public void setup() {
+    car1= new CarThing(0,100);
+    car2= new CarThing(0,10);
+    car3= new CarThing(515,275);
+    car4= new CarThing(515,340);
 
     }
 
     @Override
-    public void draw() {
+    	public void draw() {
     	background(255,150,40);
     	fill(10, 250, 122);
     	ellipse(x, y, 40, 40);
+    	
+    	car1.draw();
+    	car2.draw();
+    	car3.draw();
+    	car4.draw();
     }
     public void keyPressed()
     {
@@ -52,11 +65,60 @@ public class Frogger extends PApplet {
             	//Frog X position goes left
             }
         }
+        if(x<=20) {
+        	x=20;
+        }
+        if(x>=580) {
+        	x=580;
+        }
+        if(y<=20) {
+        	y=20;
+        }
+        if(y>=380) {
+        	y=380;
+        }
+        
     }
     public void parameter() {
     	
     }
     static public void main(String[] args) {
         PApplet.main(Frogger.class.getName());
+       
     }
+    
+    
+    class CarThing  {
+
+    	int carSpeed=15;
+    	int x;
+    	int y;
+    	
+public CarThing(int x,int y) {
+this.x=x;
+this.y=y;
+
+}
+    	
+        public void draw() {
+        	fill(218, 45, 227);
+        	rect(x,y,80,40);
+        }
+//        public void draw1() {
+//        	fill(218, 45, 227);
+//        	rect(0,100,80,40);
+//        }public void draw2() {
+//        	fill(218, 45, 227);
+//        	rect(515,190,80,40);
+//        }public void draw3() {
+//        	fill(218, 45, 227);
+//        	rect(0,275,80,40);
+//        }public void draw4() {
+//        	fill(218, 45, 227);
+//        	rect(515,350,80,40);
+//        }
+    	
+    }
+   
+
 }
