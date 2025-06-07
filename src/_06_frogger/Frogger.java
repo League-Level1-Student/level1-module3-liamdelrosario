@@ -9,8 +9,8 @@ public class Frogger extends PApplet {
 	static int y = 370;
 	CarThing car1;
 	CarThing car2;
-	CarThing car3;
-	CarThing car4;
+	Carthing1 car3;
+	Carthing1 car4;
 
 	@Override
 	public void settings() {
@@ -20,9 +20,9 @@ public class Frogger extends PApplet {
 	@Override
 	public void setup() {
 		car1 = new CarThing(0, 100);
-		car2 = new CarThing(0, 10);
-		car3 = new CarThing(515, 275);
-		car4 = new CarThing(515, 340);
+		car2 = new CarThing(0, 275);
+		car3 = new Carthing1(515, 10);
+		car4 = new Carthing1(515, 200);
 
 	}
 
@@ -75,57 +75,111 @@ public class Frogger extends PApplet {
 	}
 
 	public void parameter() {
-
+		
 	}
 
 	static public void main(String[] args) {
 		PApplet.main(Frogger.class.getName());
 
 	}
+	class Carthing1{
+		
+		int x1;
+		int y1;
+		int carSpeed =5;
+		public Carthing1(int x1, int y1) {
+			this.x1=x1;
+			this.y1=y1;
+		}
+		public void draw() {
+			// TODO Auto-generated method stub
+			fill(218, 45, 227);
+			rect(x1,y1,80,40);
+			moveLeft();
+		}
+		void moveLeft() {
+			if (x1 > 0) {
+				
+					x1 -= carSpeed;
+					if (x1 == 0) {
+						x1 = 515;
+						moveLeft();
+					}
+				}
+		}
+		void getX() {
+			
+		}
+		void getY() {
+			
+		}
+		void getSize() {
+			
+		}
+/*		boolean intersects(Carthing1 car) {
+			 if ((y > car.getY() && y < car.getY()+50) &&
+			                (x > car.getX() && x < car.getX()+car.getSize())) {
+			   return true;
+			  }
+			 else  {
+			  return false;
+			 }
+			 if(intersects) {
+				 x=300;
+				y=370;
+			 }
+				 
+			 }
+	}
+*/
+	}
+		class CarThing {
 
-	class CarThing {
-
-		int carSpeed = 1;
+		int carSpeed = 5;
 		int x;
 		int y;
-
+		
 		public CarThing(int x, int y) {
 			this.x = x;
 			this.y = y;
-
 		}
-
+		
 		public void draw() {
 			fill(218, 45, 227);
 			rect(x, y, 80, 40);
+			
 			moveRight();
-
+			
 		}
 
 		void moveRight() {
 			if (x < 515) {
-				for (int i = 0; i < 15; i++) {
+				
 					x += carSpeed;
 					if (x == 515) {
 						x = 0;
 						moveRight();
-					}
+					
 				}
 			}
-
+			
 		}
-
-		void moveLeft() {
-			if (x > 0) {
-				for (int i = 0; i < 15; i++) {
-					x -= carSpeed;
-					if (x == 515) {
-						x = 0;
-						moveLeft();
-					}
-				}
-			}
+		void getX() {
+			
 		}
+		void getY() {
+			
+		}
+		void getSize() {
+			
+		}
+		
+
+
+	}
+
+	}
+
 		/*
 		 * void moveRätt() { if(x>0) { for(int i=0;i<15;i++) { x-=8; } } }
 		 */
@@ -142,7 +196,3 @@ public class Frogger extends PApplet {
 //        	fill(218, 45, 227);
 //        	rect(515,350,80,40);
 //        }
-
-	}
-
-}
